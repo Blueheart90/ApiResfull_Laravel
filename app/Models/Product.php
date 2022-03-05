@@ -20,8 +20,26 @@ class Product extends Model
         'image',
         'seller_id'
     ];
+
     public function estaDisponible()
     {
         return $this->status == Product::PRODUCTO_DISPINIBLE;
+    }
+
+    // Relacion M:M
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
+    }
+
+    // El producto pertenece al vendedor puesto que dicho producto tiene la FK
+    public function seller()
+    {
+        return $this->belongsTo(Seller::class);
+    }
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
     }
 }
