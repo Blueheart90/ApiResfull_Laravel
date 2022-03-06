@@ -21,10 +21,11 @@ return new class extends Migration
             $table->unsignedInteger('quantity');
             $table->string('status')->default(Product::PRODUCTO_NO_DISPINIBLE);
             $table->string('image');
-            $table->unsignedInteger('seller_id');
+
 
             // Se referencia users pues sellers es una herencia de user
-            $table->foreign('seller_id')->references('id')->on('users');
+            // $table->foreign('seller_id')->references('id')->on('users');
+            $table->foreignId('seller_id')->constrained('users');
 
             $table->timestamps();
         });

@@ -16,11 +16,15 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('quantity');
-            $table->unsignedInteger('buyer_id');
-            $table->unsignedInteger('product_id');
+            // $table->unsignedInteger('buyer_id');
+            $table->foreignId('buyer_id')->constrained('users');
+            // $table->unsignedInteger('product_id');
+            $table->foreignId('product_id')->constrained('products');
 
-            $table->foreign('buyer_id')->references('id')->on('users');
-            $table->foreign('product_id')->references('id')->on('products');
+
+            // $table->foreign('buyer_id')->references('id')->on('users');
+
+            // $table->foreign('product_id')->references('id')->on('products');
 
             $table->timestamps();
         });
