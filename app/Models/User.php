@@ -19,6 +19,11 @@ class User extends Authenticatable
     const USUARIO_ADMINISTRADOR = 'true';
     const USUARIO_REGULAR = 'false';
 
+    // Esto es para indicar la tabla que tomara como referencia, y como seller 
+    // hereda a user debemos indicarle a Laravel dicha tabla sino buscara la tabla 
+    // sellers, la cual no existe
+    protected $table = 'users';
+
     /**
      * The attributes that are mass assignable.
      *
